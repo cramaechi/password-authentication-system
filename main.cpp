@@ -56,9 +56,13 @@ int main()
 
 void input(int userPassword[], int size)
 {
+    int n;
     cout<<"\nEnter PIN: ";
     for (int i = 0; i < size; i++)
-        cin>>userPassword[i];
+    {
+        cin>>n;
+        userPassword[i] = n;
+    }
 }
 
 void authenticatePassword(int userPassword[], int passwordOnRecord[], int size1, int randomNumbers[], int size2, bool& systemResponse)
