@@ -37,77 +37,77 @@ void authenticatePassword(int userPassword[], int passwordOnRecord[], int size1,
 
 int main()
 {
-	int userPassword[PASSWORD_DIGITS];
+    int userPassword[PASSWORD_DIGITS];
     int passwordOnRecord[PASSWORD_DIGITS] = {1,2,3,4,5};
     int pinNumbers[ARRAY_SIZE] = {0,1,2,3,4,5,6,7,8,9};
     int  randomNumbers[ARRAY_SIZE], count = 0;
-	bool systemResponse;
-	
-	do
-	{
-		displayUserScreen(pinNumbers, randomNumbers, ARRAY_SIZE);
-		input(userPassword, PASSWORD_DIGITS);
-		authenticatePassword(userPassword, passwordOnRecord, PASSWORD_DIGITS, randomNumbers, ARRAY_SIZE, systemResponse);
-		outputSystemResponse(systemResponse);
-	}while(!systemResponse);
+    bool systemResponse;
 
-	return 0;
+    do
+    {
+        displayUserScreen(pinNumbers, randomNumbers, ARRAY_SIZE);
+        input(userPassword, PASSWORD_DIGITS);
+        authenticatePassword(userPassword, passwordOnRecord, PASSWORD_DIGITS, randomNumbers, ARRAY_SIZE, systemResponse);
+        outputSystemResponse(systemResponse);
+    }while(!systemResponse);
+
+    return 0;
 }
 
 void input(int userPassword[], int size)
 {
-	cout<<"\nEnter PIN: ";
-	for (int i = 0; i < size; i++)
-		cin>>userPassword[i];
+    cout<<"\nEnter PIN: ";
+    for (int i = 0; i < size; i++)
+        cin>>userPassword[i];
 }
 
 void authenticatePassword(int userPassword[], int passwordOnRecord[], int size1, int randomNumbers[], int size2, bool& systemResponse)
 {
-	int digitsCorrect = 0;
+    int digitsCorrect = 0;
 
-	for (int i = 0; i < size1; i++)
-	{
-		for (int j = 0; j < size2; j++)
-		{
-			if (userPassword[i] == randomNumbers[j] && j == passwordOnRecord[i])
-				++digitsCorrect;
-		}
-	}
+    for (int i = 0; i < size1; i++)
+    {
+        for (int j = 0; j < size2; j++)
+        {
+            if (userPassword[i] == randomNumbers[j] && j == passwordOnRecord[i])
+                ++digitsCorrect;
+        }
+    }
 
-	if (digitsCorrect == 5)
-		systemResponse = true;
-	else 
-		systemResponse = false;
+    if (digitsCorrect == 5)
+        systemResponse = true;
+    else 
+        systemResponse = false;
 }
 
 void generateRandomNumbers(int randomNumbers[], int size)
 {
-	for (int i = 0; i < size; i++)
-		randomNumbers[i] = rand() % 3 + 1;
+    for (int i = 0; i < size; i++)
+        randomNumbers[i] = rand() % 3 + 1;
 }
 
 void displayUserScreen(int pinNumbers[], int randomNumbers[], int size)
 {
-	generateRandomNumbers(randomNumbers, ARRAY_SIZE);
+    generateRandomNumbers(randomNumbers, ARRAY_SIZE);
 
-	cout<<"PIN: ";
-	for (int i = 0; i < size; i++)
-		cout<<pinNumbers[i]<<" ";
+    cout<<"PIN: ";
+    for (int i = 0; i < size; i++)
+        cout<<pinNumbers[i]<<" ";
 
-	cout<<"\nNUM: ";
-	for (int i = 0; i < size; i++)
-		cout<<randomNumbers[i]<<" ";
-	
-	cout<<endl;
+    cout<<"\nNUM: ";
+    for (int i = 0; i < size; i++)
+        cout<<randomNumbers[i]<<" ";
+
+    cout<<endl;
 }
 
 void outputSystemResponse(bool& systemResponse)
 {
-	if (systemResponse == true)
-		cout<<"PIN confirmed. Thank you.\n\n";
-	else
+    if (systemResponse == true)
+        cout<<"PIN confirmed. Thank you.\n\n";
+    else
     {
-		cout<<"PIN denied. Please try again.\n\n";
+        cout<<"PIN denied. Please try again.\n\n";
         systemResponse = false;
     }
 }
