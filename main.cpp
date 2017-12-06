@@ -3,6 +3,7 @@
 #include <iostream>
 #include <iomanip>
 #include <cstdlib>
+#include <ctime>
 #include <cmath>
 
 using namespace std;
@@ -40,7 +41,7 @@ int main()
     int userPassword[PASSWORD_DIGITS];
     int passwordOnRecord[PASSWORD_DIGITS] = {1,2,3,4,5};
     int pinNumbers[ARRAY_SIZE] = {0,1,2,3,4,5,6,7,8,9};
-    int  randomNumbers[ARRAY_SIZE], count = 0;
+    int randomNumbers[ARRAY_SIZE], count = 0;
     bool systemResponse;
 
     do
@@ -56,12 +57,12 @@ int main()
 
 void input(int userPassword[], int size)
 {
-    int n;
+    char n;
     cout<<"\nEnter PIN: ";
     for (int i = 0; i < size; i++)
     {
         cin>>n;
-        userPassword[i] = n;
+        userPassword[i] = n - 48;
     }
 }
 
@@ -86,6 +87,7 @@ void authenticatePassword(int userPassword[], int passwordOnRecord[], int size1,
 
 void generateRandomNumbers(int randomNumbers[], int size)
 {
+    srand(time(NULL));
     for (int i = 0; i < size; i++)
         randomNumbers[i] = rand() % 3 + 1;
 }
