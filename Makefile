@@ -1,5 +1,5 @@
 all:
-	g++ main.cpp -o password
+	g++ main.cpp -o user_authenticateword
 
 clean:
-	rm password
+	rm user_authenticateword
