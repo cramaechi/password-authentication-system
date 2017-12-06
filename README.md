@@ -7,7 +7,7 @@ information everytime based on a secret (i.e., password). Specifically, the sche
 (00000 to 99999). Each digit is assigned a random number that is 1, 2, or 3. A user then has to enter the random numbers 
 correspondig to their PIN instead of their actual PIN numbers.
 
-The password that is stored in the program is **12345**.
+**The PIN number that is stored in the program is 12345**.
 
 ## Setup
 1. Download and install [Git](https://git-scm.com/downloads), if you don't already have it.
